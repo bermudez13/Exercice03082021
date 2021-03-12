@@ -6,7 +6,7 @@ namespace Exercice03082021.Core
 {
     public interface IOrderRepository
     {
-        Task<Order> GetOrderById(long id, bool includeRelated = true); 
+        Task<Order> GetOrderByIdUser(long id, bool includeRelated = true); 
         void Add(Order order);
         void Remove(Order order);
         //Task<QueryResult<Order>> GetOrders(OrderQuery filter);

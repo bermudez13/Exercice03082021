@@ -8,7 +8,7 @@ namespace Exercice03082021.Core
 {
     public interface IUserRepository
     {
-         Task<User> GetUserById(long id, bool includeRelated = true);
+         Task<User> GetUserById(long id);
 
         void Add(User user);
         void Remove(User user);
