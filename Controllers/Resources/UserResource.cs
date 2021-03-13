@@ -1,13 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Exercice03082021.Core.Models
+namespace Exercice03082021.Controllers.Resources
 {
-    public class User
+    public class UserResource
     {
         [Key]
         public long ID { get; set; }
@@ -36,15 +35,13 @@ namespace Exercice03082021.Core.Models
         [Required]
         [MinLength(8)]
         [MaxLength(255)]
-        [JsonIgnore]
         public string Password { get; set; }
 
-        public virtual ICollection<Order> Orders {get;set;}
+        public virtual ICollection<int> Orders {get;set;}
 
-        public User()
+        public UserResource()
         {
-            Orders = new Collection<Order>();
+            Orders = new Collection<int>();
         }
-        
     }
 }

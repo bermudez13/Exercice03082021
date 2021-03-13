@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.IO;
+using Microsoft.AspNetCore;
+using Exercice03082021.Core.Models;
 
 namespace Exercice03082021
 {
@@ -20,7 +23,7 @@ namespace Exercice03082021
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                     webBuilder.UseKestrel(o => o.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(30)).UseStartup<Startup>().UseUrls("http://localhost:5300/");
                 });
     }
 }

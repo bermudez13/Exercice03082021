@@ -1,14 +1,14 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Exercice03082021.Core.Models
+namespace Exercice03082021.Controllers.Resources
 {
-    public class Product
+    public class ProductResource
     {
-        [Key]
+         [Key]
         public long ID { get; set; }
 
         [Required]
@@ -26,10 +26,10 @@ namespace Exercice03082021.Core.Models
         public string Slug { get; set; }
         public decimal Price { get; set; }
 
-        public virtual ICollection<Order> Orders {get;set;}
-        public Product()
+        public virtual ICollection<int> Orders {get;set;}
+        public ProductResource()
         {
-            Orders = new Collection<Order>(); 
+            Orders = new Collection<int>(); 
         }
     }
 }

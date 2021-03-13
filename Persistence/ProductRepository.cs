@@ -11,10 +11,10 @@ using Exercice03082021.Extensions;
 
 namespace Exercice03082021.Persistence
 {
-    public class ProductRepositorycs:IProductRepository
+    public class ProductRepository:IProductRepository
     {
         private readonly ApiContext context;
-        public ProductRepositorycs(ApiContext context)
+        public ProductRepository(ApiContext context)
         {
             this.context = context;
         }
