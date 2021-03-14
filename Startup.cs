@@ -18,6 +18,7 @@ using Exercice03082021.Mapping;
 using Exercice03082021.Core;
 using Exercice03082021.Core.Models;
 using Microsoft.AspNetCore.Http;
+using Exercice03082021.Helpers;
 
 namespace Exercice03082021
 {
@@ -50,8 +51,12 @@ namespace Exercice03082021
             services.AddDbContext<ApiContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("CSConection")));
             services.AddMvc();
 
-             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
-             
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            services.AddRazorPages();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Exercice03082021", Version = "v1" });
@@ -78,6 +83,17 @@ namespace Exercice03082021
             {
                 endpoints.MapControllers();
             });
+
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseSwagger();
+
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtMiddleware>();
         }
     }
 }

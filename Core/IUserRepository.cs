@@ -14,7 +14,10 @@ namespace Exercice03082021.Core
         void Remove(User user);
 
         Task<User> GetUserByUser(string user);
+        Task<QueryResult<User>> GetUsers(UserQuery filter);
 
-        //AuthenticateResponse Authenticate(AuthenticateRequest model);
+        AuthenticateResponse Authenticate(AuthenticateRequest model);
+
+        
     }
 }

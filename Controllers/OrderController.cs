@@ -28,7 +28,9 @@ namespace Exercice03082021.Controllers
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
+
         [HttpPost]
+        //[Authorize(Roles = UserRole.Client)]
         public async Task<IActionResult> CreateOrder([FromBody] OrderResource orderResource)
         {
             if (!ModelState.IsValid)
