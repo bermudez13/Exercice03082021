@@ -34,14 +34,19 @@ namespace Exercice03082021.Persistence
             context.Remove(product);
         }
 
-        /*public async Task<QueryResult<Product>> GetProducts(ProductQuery queryObj)
+        public void BuyProduct(Product product)
+        {
+            
+        }
+
+        public async Task<QueryResult<Product>> GetProducts(ProductQuery queryObj)
         {
             var result = new QueryResult<Product>();
             var query = context.Products.AsQueryable();
 
             var columnsMap = new Dictionary<string, Expression<Func<Product, object>>>()
             {
-                ["name"] = v => v.Name
+                ["Name"] = v => v.Name
             };
             query = query.ApplyOrdering(queryObj, columnsMap);
 
@@ -52,6 +57,6 @@ namespace Exercice03082021.Persistence
             result.Items = await query.ToListAsync();
 
             return result;
-        }*/
+        }
     }
 }

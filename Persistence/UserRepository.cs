@@ -38,5 +38,7 @@ namespace Exercice03082021.Persistence
         {
             return await context.Users.FindAsync(user);
         }
+
+        
     }
 }

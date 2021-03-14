@@ -13,7 +13,7 @@ namespace Exercice03082021.Mapping
         {
             #region Domain to Api Resource
 
-            //CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
+            CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
 
             CreateMap<Order, OrderResource>();
 

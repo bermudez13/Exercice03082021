@@ -11,7 +11,7 @@ using Exercice03082021.Extensions;
 
 namespace Exercice03082021.Persistence
 {
-    public class OrderRepository:IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly ApiContext context;
         public OrderRepository(ApiContext context)
@@ -37,14 +37,34 @@ namespace Exercice03082021.Persistence
             context.Remove(item);
         }
 
-        /*public async Task<QueryResult<HospitalDevice>> GetHospitalDevices(HospitalDeviceQuery queryObj)
+        public bool UpdateOrderStatus(Order item)
         {
-            var result = new QueryResult<HospitalDevice>();
-            var query = context.HospitalDevices.AsQueryable();
-
-            var columnsMap = new Dictionary<string, Expression<Func<HospitalDevice, object>>>()
+            bool status;
+            try
             {
-                ["HospitalID"] = v => v.HospitalID,
+                Order orderItem = context.Orders.Where(p => p.UserID == item.UserID && p.ProductID==item.ProductID).FirstOrDefault();
+                if (orderItem != null)
+                {
+                    orderItem.Status = item.Status;
+                    context.SaveChanges();
+                }
+                status = true;
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+            return status;
+        }
+
+        public async Task<QueryResult<Order>> GetOrders(OrderQuery queryObj)
+        {
+            var result = new QueryResult<Order>();
+            var query = context.Orders.AsQueryable();
+
+            var columnsMap = new Dictionary<string, Expression<Func<Order, object>>>()
+            {
+                ["UserID"] = v => v.UserID,
             };
             query = query.ApplyOrdering(queryObj, columnsMap);
 
@@ -55,6 +75,6 @@ namespace Exercice03082021.Persistence
             result.Items = await query.ToListAsync();
 
             return result;
-        }*/
+        }
     }
 }

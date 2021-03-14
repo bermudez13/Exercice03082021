@@ -9,6 +9,7 @@ namespace Exercice03082021.Core
         Task<Order> GetOrderByIdUser(long id, bool includeRelated = true); 
         void Add(Order order);
         void Remove(Order order);
-        //Task<QueryResult<Order>> GetOrders(OrderQuery filter);
+        bool UpdateOrderStatus(Order order);
+        Task<QueryResult<Order>> GetOrders(OrderQuery filter);
     }
 }

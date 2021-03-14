@@ -12,7 +12,6 @@ namespace Exercice03082021.Core
 
         void Add(User user);
         void Remove(User user);
-        //Task<QueryResult<User>> GetUsers(UserQuery filter);
 
         Task<User> GetUserByUser(string user);
 

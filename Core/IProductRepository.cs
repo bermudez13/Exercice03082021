@@ -9,6 +9,8 @@ namespace Exercice03082021.Core
          Task<Product> GetProductById(long id); 
         void Add(Product product);
         void Remove(Product product);
-        //Task<QueryResult<Product>> GetProducts(ProductQuery filter);
+        Task<QueryResult<Product>> GetProducts(ProductQuery filter);
+
+        void BuyProduct(Product product);
     }
 }
